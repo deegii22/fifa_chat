@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "FIFA chat server\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[F\u001b[B\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,14 +9,8 @@
   "author": "Deegii",
   "license": "ISC",
   "dependencies": {
-    "@types/express": "^4.16.0",
-    "@types/socket.io": "^1.4.34",
     "express": "^4.16.3",
-    "socket.io": "^2.1.1"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-typescript": "^5.0.0-alpha.1",
-    "typescript": "^2.9.2"
+    "express-validator": "^5.2.0",
+    "mongodb": "^3.0.10"
   }
 }
