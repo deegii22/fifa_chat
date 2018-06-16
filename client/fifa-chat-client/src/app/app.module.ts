@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { ChatModule } from './chat/chat.module';
 import { MatchComponent } from './match/match.component';
+import { MatchServiceService } from './match/service/match-service.service';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { MatchComponent } from './match/match.component';
     AppRoutingModule,
     SharedModule,
     ChatModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [MatchServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
