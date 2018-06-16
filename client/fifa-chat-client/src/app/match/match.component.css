@@ -1,0 +1,14 @@
+.card {
+    margin: 30px;
+    max-width: 300px;
+}
+
+.card img {
+    width: 80px
+}  
+
+.card span {
+    font-size: 40px;
+    padding: 0 15px;
+}
+  

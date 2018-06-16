@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "tcc",
+      "prefix": "app",
       "schematics": {},
       "architect": {
         "build": {

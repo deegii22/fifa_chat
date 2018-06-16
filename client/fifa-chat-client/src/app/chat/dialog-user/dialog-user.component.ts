@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'tcc-dialog-user',
+  selector: 'dialog-user',
   templateUrl: './dialog-user.component.html',
   styleUrls: ['./dialog-user.component.css']
 })
