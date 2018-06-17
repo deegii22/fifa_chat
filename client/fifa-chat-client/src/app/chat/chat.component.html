@@ -9,7 +9,7 @@
         <p mat-line *ngIf="message.action === undefined">
           <span> {{message.content}} </span>
         </p>
-        <p mat-line *ngIf="message.action === action.JOINED" class="chat-notification">
+        <p mat-line *ngIf="message.action === action.JOINED && message.from.name != user.name" class="chat-notification">
           <span> <b>{{message.from.name}}</b> joined to the conversation. </span>
         </p>
       </mat-list-item>

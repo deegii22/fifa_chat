@@ -4,6 +4,7 @@ import { MatDialog, MatList, MatListItem } from '@angular/material';
 import { Action } from './shared/model/action';
 import { Message } from './shared/model/message';
 import { User } from './shared/model/user';
+import { AuthenticationService } from './../auth/authentication.service';
 import { SocketService } from './shared/services/socket.service';
 
 const AVATAR_URL = 'https://api.adorable.io/avatars/285';
@@ -25,7 +26,7 @@ export class ChatComponent implements  OnInit, AfterViewInit  {
   @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
 
   constructor(private socketService: SocketService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, public auth: AuthenticationService) { }
 
   ngOnInit(): void {
     this.initModel();
@@ -48,9 +49,11 @@ export class ChatComponent implements  OnInit, AfterViewInit  {
     const randomId = this.getRandomId();
     this.user = {
       id: randomId,
-      avatar: `${AVATAR_URL}/${randomId}.png`
+      avatar: `${AVATAR_URL}/${randomId}.png`,
+      name: this.auth.getUsername()
     };
     this.initIoConnection();
+    this.sendNotification(Action.JOINED);
   }
 
   private initIoConnection(): void {
@@ -78,7 +81,7 @@ export class ChatComponent implements  OnInit, AfterViewInit  {
     this.messageContent = null;
   }
 
-  public sendNotification(params: any, action: Action): void {
+  public sendNotification(action: Action): void {
     let message: Message;
 
     if (action === Action.JOINED) {
