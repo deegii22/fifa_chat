@@ -62,7 +62,7 @@
         </div>
         <ng-template #other_content>
           <mat-list class="match-list">
-            <mat-card class="card" *ngFor="let m of matches">
+            <mat-card class="card" *ngFor="let m of matches" (click)="showChat()">
               <mat-card-content>
                 <div class="home left">
                   <img mat-card-img src="/assets/images/svg/{{m.home_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
