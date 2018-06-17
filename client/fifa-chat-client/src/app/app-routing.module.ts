@@ -7,14 +7,16 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { HomeComponent } from './auth/home/home.component';
+import { MatchComponent } from './match/match.component';
 
 const routes: Routes = [
-  { path: '', component: ChatComponent },
+  { path: '', component: MatchComponent },
+  { path: 'chat', component: ChatComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] }
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
