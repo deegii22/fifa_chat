@@ -12,6 +12,8 @@ import {
   MatSidenavModule, 
   MatToolbarModule, 
   MatTabsModule,
+  MatProgressSpinnerModule,
+  MatTableModule
 } from '@angular/material';
 
 @NgModule({
@@ -27,6 +29,8 @@ import {
     MatSidenavModule, 
     MatToolbarModule, 
     MatTabsModule,
+    MatTableModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatButtonModule, 
@@ -39,6 +43,8 @@ import {
     MatSidenavModule, 
     MatToolbarModule, 
     MatTabsModule,
+    MatTableModule,
+    MatProgressSpinnerModule
   ],
   declarations: [],
   providers: [

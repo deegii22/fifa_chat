@@ -17,26 +17,49 @@
 }  
 
 .card span {
-    font-size: 40px;
-    padding: 0 20px;
-    line-height: 90px
+    font-size: 35px;
+    padding: 0 30px;
+    line-height: 60px
 }
-
-.mat-card-content {
-    height: 85px;
-}   
   
 .home, .away {
-    width: 70px;
-    text-align: center;
-    font-size: 12px;
-    text-transform: uppercase
+    width: 65px;
+    text-align: center !important;
+    text-transform: uppercase;
+    font-size: 10px;
 }
 
-.home {
-    float: left
+.home img, .away img {
+    width: 40px;
 }
 
-.away {
+.left {
+    float: left;
+    text-align: left
+}
+
+.right {
     float: right;
+    text-align: right
+}
+
+.mat-card-footer ul{
+    margin: 0;
+    padding: 5px;
+    list-style: none;
+    font-size: 11px;
+}
+
+.table-container {
+    padding: 0 30px
+}
+
+/* Structure */
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
 }

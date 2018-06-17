@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './auth/home/home.component';
 import { MatchComponent } from './match/match.component';
 import { MatchServiceService } from './match/service/match-service.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { TeamComponent } from './team/team.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http'
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    MatchComponent
+    MatchComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
