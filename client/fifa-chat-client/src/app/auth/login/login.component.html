@@ -1,27 +1,29 @@
-<div class="container">
-
-  <div class="row">
-
-    <div class="col-md-6">
-
-      <h1 class="form-signin-heading">Sign in</h1>
-      <p class="lead">Not a member? Please
-        <a routerLink="/register">register</a> instead.</p>
-
-      <form (submit)="login()">
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" name="email" 
-          placeholder="Enter email" [(ngModel)]="credentials.email">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password">
-        </div>
-        <button type="submit" class="btn btn-default">Sign in!</button>
-      </form>
-
-    </div>
-  </div>
-
-</div>
+<mat-card>
+  <h1 class="form-signin-heading">Sign in</h1>
+  <form (submit)="login()">
+    <p>
+      <mat-form-field class="form-field">
+        <input matInput type="text" name="email" placeholder="Email" [(ngModel)]="credentials.email" />
+        <button mat-button *ngIf="credentials.email" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.email=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="form-field">
+        <input matInput type="password" name="password" placeholder="Password" [(ngModel)]="credentials.password" />
+        <button mat-button *ngIf="credentials.password" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.password=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <p>
+      <button class="sign-in-button" mat-raised-button type="submit">
+        Sign In
+      </button>
+    </p>
+  </form>
+  <p class="lead">Not a member? Please
+    <a routerLink="/register">register</a> instead.
+  </p>
+</mat-card>

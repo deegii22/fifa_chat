@@ -3,9 +3,11 @@ import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
-  templateUrl: './register.component.html'
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  confirm_password: string = '';
   credentials: TokenPayload = {
     email: '',
     name: '',
@@ -20,5 +22,13 @@ export class RegisterComponent {
     }, (err) => {
       console.error(err);
     });
+  }
+
+  confirmPassword() {
+    if(this.credentials.password){
+      if(this.credentials.password === this.confirm_password){
+        
+      }
+    }
   }
 }

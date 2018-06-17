@@ -16,6 +16,8 @@ import { HomeComponent } from './auth/home/home.component';
 import { MatchComponent } from './match/match.component';
 import { MatchServiceService } from './match/service/match-service.service';
 import { HttpClientModule } from '@angular/common/http'
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { HttpClientModule } from '@angular/common/http'
     ChatModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   providers: [AuthenticationService, AuthGuardService, MatchServiceService],
   bootstrap: [AppComponent]

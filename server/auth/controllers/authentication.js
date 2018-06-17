@@ -45,5 +45,16 @@ module.exports.register = function(req, res) {
         res.status(401).json(info);
       }
     })(req, res);
-  
   };
+
+  module.exports.isRegistered = function(req, res) {
+    // console.log(req);
+    User.findOne({'email':req.query.email}, function(err, data){
+      if(err) console.log(err);
+      if(data){
+        res.json({'isRegistered': true, 'message': 'This email is already registered'});
+      } else {
+        res.json({'isRegistered': false});
+      }      
+    })
+  }

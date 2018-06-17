@@ -1,4 +1,47 @@
-<div class="container">
+<mat-card>
+  <h1 class="form-signin-heading">Register</h1>
+  <form (submit)="register()">
+    <p>
+      <mat-form-field>
+        <input matInput type="text" name="name" placeholder="Full name" [(ngModel)]="credentials.name" />
+        <button mat-button *ngIf="credentials.name" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.name=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput type="text" name="email" placeholder="Enter your email" [(ngModel)]="credentials.email" />
+        <button mat-button *ngIf="credentials.email" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.email=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput name="password" placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="credentials.password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput name="confirm_password" placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="confirm_password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+    </p>
+    <p>
+      <button class="sign-in-button" mat-button>Sign in instead</button>
+      <button class="sign-up-button" mat-raised-button type="submit">
+        Sign Up
+      </button>
+    </p>
+  </form>
+  <!-- <p class="lead">Already a member? Please 
+      <a routerLink="/login">log in</a> instead.
+    </p> -->
+</mat-card>
+
+<!-- <div class="container">
 
   <div class="row">
     <div class="col-md-6">
@@ -22,4 +65,4 @@
     </div>
   </div>
 
-</div>
+</div> -->
