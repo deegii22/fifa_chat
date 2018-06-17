@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { AuthenticationService } from './auth/authentication.service';
+
 
 @Component({
   selector: 'app-root',
@@ -14,5 +16,7 @@ export class AppComponent {
     { path: "matches", label: "All Matches" },
     { path: "teams/results", label: "Team Result" },
     { path: "teams/group-results", label: "Group Result" },
-  ];  
+  ];
+  
+  constructor(public auth: AuthenticationService){ }
 }

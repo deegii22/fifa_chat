@@ -1,23 +1,30 @@
 <div>
-    <mat-toolbar color="warm">
-      <button mat-icon-button>
-          <img src="/assets/images/fifa_icon2.svg.png" style="height: 40px">
-      </button>
-      <span class="title">Fifa Chat</span>
+  <mat-toolbar color="warm">
+    <button mat-icon-button>
+      <img src="/assets/images/fifa_icon2.svg.png" style="height: 40px">
+    </button>
+    <span class="title">Fifa Chat</span>
 
+    <div>
       <nav mat-tab-nav-bar>
-        <a mat-tab-link
-            *ngFor="let link of navLinks"
-            [routerLink]="link.path"
-            routerLinkActive #rla="routerLinkActive"
-            [active]="rla.isActive">
+        <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
           {{link.label}}
         </a>
-      </nav> 
+      </nav>
       <span class="example-fill-remaining-space"></span>
-      <button mat-icon-button>
-        <mat-icon>person</mat-icon>
-      </button>
-    </mat-toolbar>
-      <router-outlet></router-outlet>
-  </div>
+    </div>
+    <div>
+      <a *ngIf="!auth.isLoggedIn()" mat-raised-button routerLink="/login">
+        <span>Sign In</span>
+      </a>
+      <a *ngIf="auth.isLoggedIn()" mat-raised-button routerLink="/profile">
+        <mat-icon>face</mat-icon>
+        <!-- matTooltip="{{ auth.getUsername() }}" matTooltipPosition="below" -->
+      </a>
+      <a *ngIf="auth.isLoggedIn()" mat-mini-fab routerLink="/logout" (click)="auth.logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </a>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>
