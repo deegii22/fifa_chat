@@ -1,54 +1,22 @@
 <div class="match-container">
-  <h3>Today</h3>
+  <h3>{{ type }}</h3>
   <mat-list class="match-list">
     <mat-card class="card" *ngFor="let m of matches">
       <mat-card-content>
         <div class="home">
-          <img mat-card-img src="/assets/images/svg/{{m.home_team.country.substring(0,1).toLowerCase() + m.home_team.country.substring(1,m.home_team.country.length)}}.svg" alt="">
+          <img mat-card-img src="/assets/images/svg/{{m.home_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
           {{m.home_team.country}}
         </div>
         <span>{{m.home_team.goals}}:{{m.away_team.goals}}</span>
         <div class="away">
-          <img mat-card-img src="/assets/images/svg/{{m.away_team.country.substring(0,1).toLowerCase() + m.away_team.country.substring(1,m.away_team.country.length)}}.svg" alt="">
+          <img mat-card-img src="/assets/images/svg/{{m.away_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
           {{m.away_team.country}}
         </div>
       </mat-card-content>
+      <mat-divider></mat-divider>
       <mat-card-actions align="end">
-        <button mat-icon-button aria-label="Favorite">
-          <mat-icon>favorite</mat-icon>
-        </button> 
         <button mat-icon-button aria-label="Settings">
           <mat-icon>chat</mat-icon>
-        </button>
-        <button mat-icon-button aria-label="Share">
-          <mat-icon>share-arrow</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-list>
-  <h3>Tomorrow</h3>
-  <mat-list class="match-list">
-    <mat-card class="card" *ngFor="let m of matches1">
-      <mat-card-content>
-        <div class="home">
-          <img mat-card-img src="/assets/images/svg/{{m.home_team.country.substring(0,1).toLowerCase() + m.home_team.country.substring(1,m.home_team.country.length)}}.svg" alt="">
-          {{m.home_team.country}}
-        </div>
-        <span>{{m.home_team.goals}}:{{m.away_team.goals}}</span>
-        <div class="away">
-          <img mat-card-img src="/assets/images/svg/{{m.away_team.country.substring(0,1).toLowerCase() + m.away_team.country.substring(1,m.away_team.country.length)}}.svg" alt="">
-          {{m.away_team.country}}
-        </div>
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-icon-button aria-label="Favorite">
-          <mat-icon>favorite</mat-icon>
-        </button> 
-        <button mat-icon-button aria-label="Settings">
-          <mat-icon>chat</mat-icon>
-        </button>
-        <button mat-icon-button aria-label="Share">
-          <mat-icon>share-arrow</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>

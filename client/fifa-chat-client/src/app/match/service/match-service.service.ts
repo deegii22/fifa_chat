@@ -8,7 +8,7 @@ export class MatchServiceService {
 
   constructor(public http: HttpClient) { }
 
-  getMatches(type: string){
+  getMatches(type: string=''){
 
     return this.http.get('http://worldcup.sfg.io/matches/' + type);
 

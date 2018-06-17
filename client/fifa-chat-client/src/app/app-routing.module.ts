@@ -9,7 +9,9 @@ import { HomeComponent } from './auth/home/home.component';
 import { MatchComponent } from './match/match.component';
 
 const routes: Routes = [
-  { path: '', component: MatchComponent },
+  { path: 'matches', component: MatchComponent},
+  { path: 'matches/:type', component: MatchComponent},
+  { path: 'teams/:type', component: MatchComponent},
   { path: 'chat', component: ChatComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
