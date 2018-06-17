@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchServiceService } from './service/match-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {MatTableDataSource} from '@angular/material';
 import { map } from 'rxjs/operators';
 import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
@@ -19,7 +19,7 @@ export class MatchComponent{
 
   displayedColumns = ['date','hour', 'homeCountry','goals', 'awayCountry', 'status'];
 
-  constructor(private matchService: MatchServiceService, private route: ActivatedRoute) {
+  constructor(private matchService: MatchServiceService, private route: ActivatedRoute, private router: Router) {
 
     route.params.subscribe(params => {
       this.type = params['type'];
@@ -43,6 +43,10 @@ export class MatchComponent{
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  showChat(){
+    this.router.navigateByUrl('/chat');
   }
 
 }

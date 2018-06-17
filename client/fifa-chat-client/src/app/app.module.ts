@@ -19,7 +19,6 @@ import { MatchServiceService } from './match/service/match-service.service';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
-// import { TeamComponent } from './team/team.component'
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    MatchComponent,
-    // TeamComponent
+    MatchComponent
   ],
   imports: [
     BrowserModule,
