@@ -1,15 +1,11 @@
-* {
-   font-family: 'Google Sans',arial,sans-serif;
-}
-
 mat-card {
     width: 300px;
-    margin: 20px auto;
+    margin: 3% auto;
     border-radius: 8px;
 }
 
 mat-form-field {
-    width: 250px;
+    width: 100%;
 }
 
 .sign-in-button {

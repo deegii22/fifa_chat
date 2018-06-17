@@ -3,27 +3,25 @@
   <form (submit)="login()">
     <p>
       <mat-form-field class="form-field">
-        <input matInput type="text" name="email" placeholder="Email" [(ngModel)]="credentials.email" />
+        <input matInput type="text" name="email" placeholder="Enter your email" [(ngModel)]="credentials.email" required/>
         <button mat-button *ngIf="credentials.email" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.email=''">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field class="form-field">
-        <input matInput type="password" name="password" placeholder="Password" [(ngModel)]="credentials.password" />
-        <button mat-button *ngIf="credentials.password" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.password=''">
-          <mat-icon>close</mat-icon>
-        </button>
+      <mat-form-field>
+        <input matInput name="password" placeholder="Enter your password" [type]="show ? 'text' : 'password'" [(ngModel)]="credentials.password" required/>
+        <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </p>
     <p>
+      <a class="sign-up-button" routerLink="/register" mat-button>
+        Sign up instead
+      </a>
       <button class="sign-in-button" mat-raised-button type="submit">
         Sign In
       </button>
     </p>
   </form>
-  <p class="lead">Not a member? Please
-    <a routerLink="/register">register</a> instead.
-  </p>
 </mat-card>

@@ -3,7 +3,7 @@
   <form (submit)="register()">
     <p>
       <mat-form-field>
-        <input matInput type="text" name="name" placeholder="Full name" [(ngModel)]="credentials.name" />
+        <input matInput type="text" name="name" placeholder="Full name" [(ngModel)]="credentials.name" required/>
         <button mat-button *ngIf="credentials.name" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.name=''">
           <mat-icon>close</mat-icon>
         </button>
@@ -11,7 +11,7 @@
     </p>
     <p>
       <mat-form-field>
-        <input matInput type="text" name="email" placeholder="Enter your email" [(ngModel)]="credentials.email" />
+        <input matInput type="text" name="email" placeholder="Enter your email" [(ngModel)]="credentials.email" required/>
         <button mat-button *ngIf="credentials.email" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.email=''">
           <mat-icon>close</mat-icon>
         </button>
@@ -19,50 +19,21 @@
     </p>
     <p>
       <mat-form-field>
-        <input matInput name="password" placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="credentials.password">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <input matInput name="password" placeholder="Enter your password" [type]="show ? 'text' : 'password'" [(ngModel)]="credentials.password" required/>
+        <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput name="confirm_password" placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [(ngModel)]="confirm_password">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <input matInput name="confirm_password" placeholder="Confirm your password" [type]="show ? 'text' : 'password'" [(ngModel)]="confirm_password" required/>
+        <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </p>
     <p>
-      <button class="sign-in-button" mat-button>Sign in instead</button>
+      <a class="sign-in-button" routerLink="/login" mat-button>Sign in instead</a>
       <button class="sign-up-button" mat-raised-button type="submit">
         Sign Up
       </button>
     </p>
   </form>
-  <!-- <p class="lead">Already a member? Please 
-      <a routerLink="/login">log in</a> instead.
-    </p> -->
 </mat-card>
-
-<!-- <div class="container">
-
-  <div class="row">
-    <div class="col-md-6">
-      <h1>Register</h1>
-      <p class="lead">Already a member? Please <a routerLink="/login">log in</a> instead.</p>
-      <form (submit)="register()">
-        <div class="form-group">
-          <label for="name">Full name</label>
-          <input type="text" class="form-control" name="name" placeholder="Enter your name" [(ngModel)]="credentials.name">
-        </div>
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="credentials.email">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password">
-        </div>
-        <button type="submit" class="btn btn-default">Register!</button>
-      </form>
-    </div>
-  </div>
-
-</div> -->
