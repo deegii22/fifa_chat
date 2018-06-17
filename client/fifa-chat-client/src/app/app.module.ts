@@ -15,9 +15,11 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './auth/home/home.component';
 import { MatchComponent } from './match/match.component';
 import { MatchServiceService } from './match/service/match-service.service';
-import { HttpClientModule } from '@angular/common/http'
+
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
+// import { TeamComponent } from './team/team.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    MatchComponent
+    MatchComponent,
+    // TeamComponent
   ],
   imports: [
     BrowserModule,
