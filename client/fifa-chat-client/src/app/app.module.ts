@@ -32,9 +32,10 @@ import { HttpClientModule } from '@angular/common/http'
     SharedModule,
     ChatModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [AuthenticationService, AuthGuardService, HttpClientModule, MatchServiceService],
+  providers: [AuthenticationService, AuthGuardService, MatchServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
