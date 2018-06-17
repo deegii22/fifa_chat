@@ -14,7 +14,7 @@ const AVATAR_URL = 'https://api.adorable.io/avatars/285';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements  OnInit, AfterViewInit  {
+export class ChatComponent implements OnInit, AfterViewInit {
   action = Action;
   user: User;
   messages: Message[] = [];
