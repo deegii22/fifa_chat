@@ -4,8 +4,10 @@ import { ChatComponent } from './chat/chat.component';
 import { MatchComponent } from './match/match.component';
 
 const routes: Routes = [
-  { path: '', component: MatchComponent },
-  { path: 'chat', component: ChatComponent }
+  { path: 'matches', component: MatchComponent},
+  { path: 'matches/:type', component: MatchComponent},
+  { path: 'teams/:type', component: MatchComponent},
+  { path: 'chat', component: ChatComponent },
 ];
 
 @NgModule({

@@ -1,5 +1,19 @@
-.app-content {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-  } 
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: inherit !Important;
+  border-bottom: 1px solid #bdbdbd;
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+}
+.title {
+  padding-left: 10px;
+  text-transform: uppercase
+}
+.mat-tab-nav-bar .mat-ink-bar {
+  background-color: #d20a11 !Important
+}
+nav {
+  margin-left: 100px;
+  border-bottom: none !important
+}
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}
