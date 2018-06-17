@@ -11,9 +11,23 @@
   <div>
     <mat-toolbar color="primary">
       <button mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
+        <mat-icon>menu</mat-icon>
+      </button>
       <span>Fifa Chat</span>
+      <span class="toolbar-spacer"></span>
+
+      <a *ngIf="!auth.isLoggedIn()" mat-raised-button
+      routerLink="/login">
+        <span>Sign In</span>
+      </a>
+      <a *ngIf="auth.isLoggedIn()" mat-raised-button
+      routerLink="/profile">
+        <mat-icon matTooltip="{{ auth.getUsername() }}" matTooltipPosition="below">face</mat-icon>
+      </a>
+      <a *ngIf="auth.isLoggedIn()" mat-mini-fab
+      routerLink="/logout" (click)="auth.logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </a>
     </mat-toolbar>
 
     <div class="app-content">
