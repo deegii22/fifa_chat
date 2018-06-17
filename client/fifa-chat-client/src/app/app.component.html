@@ -1,5 +1,5 @@
 <div>
-  <mat-toolbar color="warm">
+  <mat-toolbar color="warn">
     <button mat-icon-button>
       <img src="/assets/images/fifa_icon2.svg.png" style="height: 40px">
     </button>
@@ -17,11 +17,10 @@
       <a *ngIf="!auth.isLoggedIn()" mat-raised-button routerLink="/login">
         <span>Sign In</span>
       </a>
-      <a *ngIf="auth.isLoggedIn()" mat-raised-button routerLink="/profile">
+      <a *ngIf="auth.isLoggedIn()" mat-mini-fab routerLink="/profile" color="white" matTooltip="{{ auth.getUsername() }}">
         <mat-icon>face</mat-icon>
-        <!-- matTooltip="{{ auth.getUsername() }}" matTooltipPosition="below" -->
       </a>
-      <a *ngIf="auth.isLoggedIn()" mat-mini-fab routerLink="/logout" (click)="auth.logout()">
+      <a *ngIf="auth.isLoggedIn()" mat-mini-fab routerLink="/logout" (click)="auth.logout()" color="warn" matTooltip="Sign out">
         <mat-icon>exit_to_app</mat-icon>
       </a>
     </div>

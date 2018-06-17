@@ -1,0 +1,29 @@
+* {
+   font-family: 'Google Sans',arial,sans-serif;
+}
+
+mat-card {
+    width: 300px;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+
+mat-form-field {
+    width: 250px;
+}
+
+.sign-in-button {
+    color: #4285f4;
+}
+
+.sign-up-button {
+    color: white;
+    background: #4285f4;
+    float: right;
+    border-radius: 5px;
+}
+
+.lead {
+    clear: both;
+    padding: 20px 5px;
+}
