@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService, TokenPayload } from '../authentication.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
@@ -12,12 +12,17 @@ export class LoginComponent {
     email: '',
     password: ''
   };
+  returnUrl: string;
 
-  constructor(private auth: AuthenticationService, private router: Router, public snackBar: MatSnackBar) {}
+  constructor(private route: ActivatedRoute, private auth: AuthenticationService, private router: Router, public snackBar: MatSnackBar) {}
+
+  ngOnInit(){
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/profile';
+  }
 
   login() {
     this.auth.login(this.credentials).subscribe(() => {
-      this.router.navigateByUrl('/profile');
+      this.router.navigateByUrl(this.returnUrl);
     }, (err) => {
       console.log(err.error.message);
       this.snackBar.open(err.error.message,'',{duration:2000});
