@@ -4,10 +4,7 @@
   <form (submit)="login()">
     <p>
       <mat-form-field class="form-field">
-        <input matInput type="text" name="email" placeholder="Enter your email" [(ngModel)]="credentials.email" required/>
-        <button mat-button *ngIf="credentials.email" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.email=''">
-          <mat-icon>close</mat-icon>
-        </button>
+        <input matInput type="email" placeholder="Enter your email" [(ngModel)]="credentials.email" required/>
       </mat-form-field>
     </p>
     <p>

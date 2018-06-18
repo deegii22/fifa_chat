@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './auth/http.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSnackBarModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthenticationService, AuthGuardService, MatchServiceService],
+  providers: [AuthenticationService, AuthGuardService, MatchServiceService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
