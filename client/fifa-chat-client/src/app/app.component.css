@@ -32,3 +32,11 @@ nav {
   background: #212121;
   color: #fff;
 } */
+@font-face {
+  font-family: dusha;
+  src: url('/assets/fonts/dusha-regular.woff');
+}
+
+mat-toolbar {
+  background-image: url('/assets/images/fwc_darkbluebg.png');
+}

@@ -1,6 +1,6 @@
 mat-card {
     width: 400px;
-    margin: 8px auto;
+    margin: 7px auto;
     text-align: center;
     border-radius: 8px;
 }
@@ -11,4 +11,8 @@ mat-form-field {
 
 .proimage{
     width: 300px;
+}
+
+h1 {
+    font-family: dusha;
 }
