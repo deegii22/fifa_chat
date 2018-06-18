@@ -9,6 +9,7 @@ import { HomeComponent } from './auth/home/home.component';
 import { MatchComponent } from './match/match.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: "matches/today", pathMatch:"full"},
   { path: 'matches', component: MatchComponent},
   { path: 'matches/:type', component: MatchComponent},
   { path: 'teams/:type', component: MatchComponent},
