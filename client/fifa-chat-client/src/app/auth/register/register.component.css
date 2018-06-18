@@ -23,3 +23,7 @@ mat-form-field {
     clear: both;
     padding: 20px 5px;
 }
+
+h1 {
+    font-family: dusha;
+}

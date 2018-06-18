@@ -27,3 +27,12 @@ nav {
 .example-fill-remaining-space {
   flex: 1 1 auto;
 }
+
+@font-face {
+  font-family: dusha;
+  src: url('/assets/fonts/dusha-regular.woff');
+}
+
+mat-toolbar {
+  background-image: url('/assets/images/fwc_darkbluebg.png');
+}
