@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChildren, ViewChild, AfterViewInit, QueryList, ElementRef } from '@angular/core';
 import { MatDialog, MatList, MatListItem } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from "rxjs";
 
 import { Action } from './shared/model/action';
 import { Message } from './shared/model/message';
@@ -15,8 +17,10 @@ const AVATAR_URL = 'https://api.adorable.io/avatars/285';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit, AfterViewInit {
+  private subscription: Subscription;
   action = Action;
   user: User;
+  match: string;
   messages: Message[] = [];
   messageContent: string;
   ioConnection: any;
@@ -25,11 +29,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
 
-  constructor(private socketService: SocketService,
+  constructor(private socketService: SocketService, private activatedRoute: ActivatedRoute,
     public dialog: MatDialog, public auth: AuthenticationService) { }
 
   ngOnInit(): void {
     this.initModel();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   ngAfterViewInit(): void {
@@ -47,10 +55,14 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   private initModel(): void {
     const randomId = this.getRandomId();
+    this.subscription = this.activatedRoute.params.subscribe(
+      (param: any) => this.match = param['id']
+    );
     this.user = {
       id: randomId,
       avatar: `${AVATAR_URL}/${randomId}.png`,
-      name: this.auth.getUsername()
+      name: this.auth.getUsername(),
+      match: this.match
     };
     this.initIoConnection();
     this.sendNotification(Action.JOINED);
@@ -61,7 +73,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
     this.ioConnection = this.socketService.onMessage()
       .subscribe((message: Message) => {
-        this.messages.push(message);
+        if(message.from.match === this.user.match)
+          this.messages.push(message);
       });
   }
 
