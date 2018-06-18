@@ -11,7 +11,6 @@ import { MatchComponent } from './match/match.component';
 const routes: Routes = [
   { path: 'matches', component: MatchComponent},
   { path: 'matches/:type', component: MatchComponent},
-  { path: 'teams/:type', component: MatchComponent},
   { path: 'chat/:id', component: ChatComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },

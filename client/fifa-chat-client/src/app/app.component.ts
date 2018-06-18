@@ -14,8 +14,8 @@ export class AppComponent {
     { path: "matches/today", label: "Today" },
     { path: "matches/tomorrow", label: "Tomorrow" },
     { path: "matches", label: "All Matches" },
-    { path: "teams/results", label: "Team Result" },
-    { path: "teams/group-results", label: "Group Result" },
+    // { path: "teams/results", label: "Team Result" },
+    // { path: "teams/group-results", label: "Group Result" },
   ];
   
   constructor(public auth: AuthenticationService){ }

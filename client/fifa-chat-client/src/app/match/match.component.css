@@ -43,7 +43,13 @@
     float: right;
     text-align: right
 }
-
+.mat-card {
+    padding-bottom: 5px !important
+}
+.mat-card-content {
+    margin: 10px 0 0 !important;
+    padding-bottom: 19px !important;
+}
 .mat-card-footer ul{
     margin: 0;
     padding: 5px;
@@ -55,7 +61,6 @@
     padding: 0 30px
 }
 
-/* Structure */
 table {
     width: 100%;
 }
@@ -63,4 +68,20 @@ table {
 .mat-form-field {
     font-size: 14px;
     width: 100%;
+}
+
+.time {
+    position: absolute;
+    top:1px;
+    right: 0;   
+}
+
+.time small {
+    text-transform: uppercase;
+    font-size: 8px;
+}
+
+.mat-progress-bar {
+    height: 2px;
+    margin-top:2px;
 }

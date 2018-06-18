@@ -37,6 +37,7 @@ export class MatchComponent implements OnInit{
     })
   }
 
+  // Added by Deegii - fetch matches with real time data 
   refreshData(){
     this.matchesSubscription = this.matchService.getMatches(this.type).subscribe(matches => {
         this.matches = matches;
@@ -62,9 +63,10 @@ export class MatchComponent implements OnInit{
     this.timerSubscription = timer(20000).subscribe(() => this.refreshData());
   }
 
+  // Added by Deegii - table filter
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    filterValue = filterValue.trim(); 
+    filterValue = filterValue.toLowerCase(); 
     this.dataSource.filter = filterValue;
   }
 

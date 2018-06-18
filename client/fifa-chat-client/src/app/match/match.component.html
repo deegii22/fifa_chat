@@ -65,6 +65,10 @@
           <mat-list class="match-list">
             <mat-card class="card" *ngFor="let m of matches" (click)="showChat(m.fifa_id)">
               <mat-card-content>
+                <div class="time">  
+                  <small>{{m.time}}</small>
+                  <mat-progress-bar *ngIf="m.time != 'full-time'" mode="indeterminate" value="{{m.time*0.9}}" color="accent"></mat-progress-bar>
+                </div>
                 <div class="home left">
                   <img mat-card-img src="/assets/images/svg/{{m.home_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
                   {{m.home_team.country}}
@@ -74,21 +78,21 @@
                   <img mat-card-img src="/assets/images/svg/{{m.away_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
                   {{m.away_team.country}}
                 </div>
-                <div style="text-align: center">{{m.datetime.substring(11,16)}}</div>
+                <div style="text-align: center; margin-top: 10px;"><small>{{m.datetime.substring(11,16)}}</small></div>
               </mat-card-content>
-              <mat-divider></mat-divider>
-              <mat-card-footer>
+              <mat-divider *ngIf="m.home_team_events !=''"></mat-divider>
+              <mat-card-footer *ngIf="m.home_team_events !=''">
                 <div class="left">
                     <ul>
                       <li *ngFor="let e of m.home_team_events">
-                        <small *ngIf="e.type_of_event == 'goal'">{{e.player}} {{e.time}}</small>
+                        <small *ngIf="e.type_of_event == 'goal' || e.type_of_event == 'goal-penalty'">{{e.player}} {{e.time}}</small>
                       </li>
                     </ul>
                 </div>
                 <div class="right">
                     <ul>
                       <li *ngFor="let e of m.away_team_events">
-                          <small *ngIf="e.type_of_event == 'goal'">{{e.player}} {{e.time}}</small>
+                          <small *ngIf="e.type_of_event == 'goal' || e.type_of_event == 'goal-penalty'">{{e.player}} {{e.time}}</small>
                       </li>
                     </ul>
                 </div>
