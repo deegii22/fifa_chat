@@ -12,7 +12,6 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './auth/home/home.component';
 import { MatchComponent } from './match/match.component';
 import { MatchServiceService } from './match/service/match-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,7 +27,6 @@ import { HttpService } from './auth/http.service';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
     MatchComponent
   ],
   imports: [
