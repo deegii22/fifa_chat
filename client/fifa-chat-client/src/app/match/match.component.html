@@ -3,7 +3,7 @@
     <div class="match-container">
         <div class="table-container" *ngIf="type == null; else other_content">
           <h3>All matches</h3>
-          <mat-form-field>
+          <mat-form-field color="warn">
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
           </mat-form-field>
           
@@ -63,7 +63,7 @@
         <ng-template #other_content>
           <h3>{{ type }}</h3>
           <mat-list class="match-list">
-            <mat-card class="card" *ngFor="let m of matches" (click)="showChat(m.fifa_id)">
+            <mat-card class="card" *ngFor="let m of matches" (click)="showChat(m.fifa_id)" color="white">
               <mat-card-content>
                 <div class="time">  
                   <small>{{m.time}}</small>

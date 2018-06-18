@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "../node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css"; */
 @import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
     margin: 0;
     padding: 0
 }
+
+/* .mat-form-field-appearance-legacy .mat-form-field-label {
+    color: rgba(0,0,0,.54);
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: rgba(0,0,0,.42);
+} */

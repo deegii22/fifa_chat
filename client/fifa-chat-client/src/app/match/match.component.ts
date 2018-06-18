@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatchServiceService } from './service/match-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatTableDataSource} from '@angular/material';

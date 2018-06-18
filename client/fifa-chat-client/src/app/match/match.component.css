@@ -44,8 +44,14 @@
     text-align: right
 }
 .mat-card {
-    padding-bottom: 5px !important
+    padding-bottom: 5px !important;
+    /* background: #fff;
+    color: rgba(0,0,0,.87); */
 }
+/* .mat-divider {
+    border-top-color: rgba(0,0,0,.12);
+} */
+
 .mat-card-content {
     margin: 10px 0 0 !important;
     padding-bottom: 19px !important;
