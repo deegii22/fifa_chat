@@ -2,30 +2,45 @@ import { Component, OnInit } from '@angular/core';
 import { MatchServiceService } from './service/match-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatTableDataSource} from '@angular/material';
-import { map } from 'rxjs/operators';
-import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
+import { Observable, timer } from 'rxjs';
 
 @Component({
   selector: 'match',
   templateUrl: './match.component.html',
   styleUrls: ['./match.component.css']
 })  
-export class MatchComponent{
+export class MatchComponent implements OnInit{
 
   loading: boolean = true;
   matches;
   type;
   dataSource;
+  matchesSubscription;
+  timerSubscription
 
   displayedColumns = ['date','hour', 'homeCountry','goals', 'awayCountry', 'status'];
 
-  constructor(private matchService: MatchServiceService, private route: ActivatedRoute, private router: Router) {
+  constructor(private matchService: MatchServiceService, private route: ActivatedRoute, private router: Router) {}
 
-    route.params.subscribe(params => {
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
       this.type = params['type'];
-      this.matchService.getMatches(this.type).subscribe(data => {
-        this.matches = data;
-        
+
+      if (this.matchesSubscription) {
+        this.matchesSubscription.unsubscribe();
+      }
+      if (this.timerSubscription) {
+          this.timerSubscription.unsubscribe();
+      }
+
+      this.refreshData();
+    })
+  }
+
+  refreshData(){
+    this.matchesSubscription = this.matchService.getMatches(this.type).subscribe(matches => {
+        this.matches = matches;
+
         if(this.type == null){
           const ELEMENT_DATA: PeriodicElement[] = [];
           for(let m of this.matches){
@@ -35,8 +50,16 @@ export class MatchComponent{
         }
 
         this.loading=false;
-      });
-    })
+
+        if(this.type == 'current' && this.matches != 0) {
+          console.log("calling subscription ...")
+          this.subscribeToData();
+        }
+    });
+  }
+
+  subscribeToData(): void {
+    this.timerSubscription = timer(20000).subscribe(() => this.refreshData());
   }
 
   applyFilter(filterValue: string) {

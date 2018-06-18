@@ -1,8 +1,8 @@
 <mat-spinner *ngIf="loading; else container" [diameter]="40"  style="position:fixed;top:50%;left:50%" mode="indeterminate"></mat-spinner>
 <ng-template #container>
     <div class="match-container">
-        <h3>{{ type }}</h3>
         <div class="table-container" *ngIf="type == null; else other_content">
+          <h3>All matches</h3>
           <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
           </mat-form-field>
@@ -61,6 +61,7 @@
           </table>    
         </div>
         <ng-template #other_content>
+          <h3>{{ type }}</h3>
           <mat-list class="match-list">
             <mat-card class="card" *ngFor="let m of matches" (click)="showChat()">
               <mat-card-content>

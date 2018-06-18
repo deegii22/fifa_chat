@@ -2,7 +2,8 @@
     padding: 10px 40px;
     color: #999;
     font-family: Roboto,"Helvetica Neue",sans-serif;
-    text-transform: uppercase
+    text-transform: uppercase;
+    font-weight: normal
 }
 
 .card {
