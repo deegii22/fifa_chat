@@ -1,7 +1,8 @@
 mat-card {
     width: 300px;
-    margin: 10% auto;
+    margin: 8px auto;
     border-radius: 8px;
+    text-align: center;
 }
 
 mat-form-field {
@@ -22,4 +23,8 @@ mat-form-field {
 .lead {
     clear: both;
     padding: 20px 5px;
+}
+
+.proimage{
+    width: 250px;
 }

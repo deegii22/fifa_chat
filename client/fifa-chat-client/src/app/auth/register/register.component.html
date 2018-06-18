@@ -1,37 +1,42 @@
 <mat-card>
   <h1 class="form-signin-heading">Register</h1>
-  <form (submit)="register()">
+  <!-- {{myForm.valid}} -->
+  <form [formGroup]="myForm" (submit)="register()" novalidate>
     <p>
       <mat-form-field>
-        <input matInput type="text" name="name" placeholder="Full name" [(ngModel)]="credentials.name" required/>
-        <button mat-button *ngIf="credentials.name" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.name=''">
-          <mat-icon>close</mat-icon>
-        </button>
+        <input #name matInput type="text" formControlName="name" placeholder="Full name" [errorStateMatcher]="matcher" required/>
+        <mat-error *ngIf="myForm.get('name').errors && myForm.get('name').errors.required">Name is required</mat-error>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput type="text" name="email" placeholder="Enter your email" [(ngModel)]="credentials.email" required/>
-        <button mat-button *ngIf="credentials.email" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.email=''">
-          <mat-icon>close</mat-icon>
-        </button>
+        <input matInput type="email" formControlName="email" placeholder="Email" [errorStateMatcher]="matcher" required/>
+        <mat-error *ngIf="myForm.get('email').errors && myForm.get('email').errors.required">Email is required</mat-error>
+        <mat-error *ngIf="myForm.get('email').errors && myForm.get('email').errors.emailTaken">
+          This email is already registered!
+        </mat-error>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput name="password" placeholder="Enter your password" [type]="show ? 'text' : 'password'" [(ngModel)]="credentials.password" required/>
+        <input matInput formControlName="password" placeholder="Password" [errorStateMatcher]="matcher" [type]="show ? 'text' : 'password'" required/>
         <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="myForm.get('password').errors && myForm.get('password').errors.required">Password is required</mat-error>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput name="confirm_password" placeholder="Confirm your password" [type]="show ? 'text' : 'password'" [(ngModel)]="confirm_password" required/>
+        <input matInput formControlName="confirm_password" placeholder="Confirm password" [errorStateMatcher]="matcher" [type]="show ? 'text' : 'password'" required/>
         <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="myForm.get('confirm_password').errors && myForm.get('confirm_password').errors.required">Corfirm password is required</mat-error>
+        <mat-error *ngIf="myForm.get('confirm_password').errors && myForm.get('confirm_password').errors.matchPassword">
+          Passwords are not match
+        </mat-error>
       </mat-form-field>
     </p>
     <p>
       <a class="sign-in-button" routerLink="/login" mat-button>Sign in instead</a>
-      <button class="sign-up-button" mat-raised-button type="submit">
+      <button class="sign-up-button" g-disabled="myForm.$invalid" mat-raised-button type="submit">
         Sign Up
       </button>
     </p>

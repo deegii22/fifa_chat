@@ -1,17 +1,16 @@
 <mat-card>
-  <h1 class="form-signin-heading">Sign in</h1>
+  <!-- <h1 class="form-signin-heading">Sign in</h1> -->
+  <img class="proimage" src="/assets/images/fifa_icon2.svg.png" />
   <form (submit)="login()">
     <p>
       <mat-form-field class="form-field">
-        <input matInput type="text" name="email" placeholder="Enter your email" [(ngModel)]="credentials.email" required/>
-        <button mat-button *ngIf="credentials.email" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.email=''">
-          <mat-icon>close</mat-icon>
-        </button>
+        <input matInput type="email" name="email" placeholder="Enter your email" [(ngModel)]="credentials.email" required/>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput name="password" placeholder="Enter your password" [type]="show ? 'text' : 'password'" [(ngModel)]="credentials.password" required/>
+        <input matInput name="password" name="password" placeholder="Enter your password" [type]="show ? 'text' : 'password'" [(ngModel)]="credentials.password"
+          required/>
         <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </p>

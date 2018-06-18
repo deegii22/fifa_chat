@@ -15,10 +15,12 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './auth/home/home.component';
 import { MatchComponent } from './match/match.component';
 import { MatchServiceService } from './match/service/match-service.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './auth/http.service';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatTooltipModule,
     MatSnackBarModule,
+    ReactiveFormsModule,
   ],
-  providers: [AuthenticationService, AuthGuardService, MatchServiceService],
+  providers: [AuthenticationService, AuthGuardService, MatchServiceService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
