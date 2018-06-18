@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'matches', component: MatchComponent},
   { path: 'matches/:type', component: MatchComponent},
   { path: 'teams/:type', component: MatchComponent},
-  { path: 'chat/:id', component: ChatComponent },
+  { path: 'chat/:id', component: ChatComponent , canActivate: [AuthGuardService] },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
