@@ -1,9 +1,9 @@
 <mat-card>
   <h1 class="form-signin-heading">Register</h1>
-  <form (submit)="register()">
+  <form [formGroup]="myForm" (submit)="register()">
     <p>
       <mat-form-field>
-        <input matInput type="text" name="name" placeholder="Full name" [(ngModel)]="credentials.name" required/>
+        <input matInput type="text" name="name" formControlName="name" placeholder="Full name" [(ngModel)]="credentials.name" required/>
         <button mat-button *ngIf="credentials.name" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.name=''">
           <mat-icon>close</mat-icon>
         </button>
@@ -11,21 +11,34 @@
     </p>
     <p>
       <mat-form-field>
-        <input matInput type="text" name="email" placeholder="Enter your email" [(ngModel)]="credentials.email" required/>
+        <input matInput type="text" name="email" formControlName="email" placeholder="Enter your email"
+          required/>
         <button mat-button *ngIf="credentials.email" matSuffix mat-icon-button aria-label="Clear" (click)="credentials.email=''">
           <mat-icon>close</mat-icon>
         </button>
+        <mat-error *ngIf="myForm.get('email').status === 'PENDING'">
+          Checking...
+        </mat-error>
+        <mat-error *ngIf="myForm.get('email').status === 'VALID'">
+          😺 Email is available!
+        </mat-error>
+
+        <mat-error *ngIf="myForm.get('email').errors && myForm.get('email').errors.emailTaken">
+          😢 Oh noes, this email is already taken!
+        </mat-error>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput name="password" placeholder="Enter your password" [type]="show ? 'text' : 'password'" [(ngModel)]="credentials.password" required/>
+        <input matInput name="password" placeholder="Enter your password" [type]="show ? 'text' : 'password'" [(ngModel)]="credentials.password"
+          required/>
         <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput name="confirm_password" placeholder="Confirm your password" [type]="show ? 'text' : 'password'" [(ngModel)]="confirm_password" required/>
+        <input matInput name="confirm_password" placeholder="Confirm your password" [type]="show ? 'text' : 'password'" [(ngModel)]="confirm_password"
+          required/>
         <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </p>

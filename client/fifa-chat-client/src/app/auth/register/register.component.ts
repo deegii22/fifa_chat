@@ -3,6 +3,7 @@ import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
+import {FormControl, Validators, ValidationErrors, AbstractControl, FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   templateUrl: './register.component.html',
@@ -15,8 +16,21 @@ export class RegisterComponent {
     name: '',
     password: ''
   };
+  myForm: FormGroup;
 
-  constructor(private auth: AuthenticationService, private router: Router, public snackBar: MatSnackBar, public http: HttpClient) { }
+  constructor(private fb: FormBuilder, private auth: AuthenticationService, private router: Router, public snackBar: MatSnackBar, public http: HttpClient) { }
+
+  ngOnInit(){
+    this.myForm = this.fb.group({
+      name: ['', Validators.required],
+      email: [
+        '',
+        [Validators.required, Validators.email],
+        this.emailValidator.bind(this)
+      ],
+      password: ['', Validators.required]
+    });
+  }
 
   register() {
     if (this.credentials.password) {
@@ -26,21 +40,25 @@ export class RegisterComponent {
       }
     }
 
-    const isRegistered = this.http.get(`http://localhost:3000/auth/isRegistered?email=${this.credentials.email}`);
-    isRegistered.subscribe(
+    this.auth.register(this.credentials).subscribe((data) => {
+      console.log(data);
+      this.router.navigateByUrl('/profile');
+    }, (err) => {
+      console.error(err);
+    });
+  }
+
+  emailValidator(control: AbstractControl){
+    const isRegistered = this.http.get(`http://localhost:3000/auth/isRegistered?email=${control.value}`);
+    return isRegistered.subscribe(
       (data) => {
         if (data['isRegistered'] === true) {
           this.snackBar.open('This email is already registered', '', { duration: 2000 });
+          return {'registered':true};
         } else {
-          this.auth.register(this.credentials).subscribe((data) => {
-            console.log(data);
-            this.router.navigateByUrl('/profile');
-          }, (err) => {
-            console.error(err);
-          });
+          return null;
         }
-      },
-      (err) => console.log(err)
+      }
     )
   }
 }

@@ -18,7 +18,7 @@
         <span>Sign In</span>
       </a>
       <a *ngIf="auth.isLoggedIn()" mat-mini-fab routerLink="/profile" color="white" matTooltip="{{ auth.getUsername() }}">
-        <mat-icon>face</mat-icon>
+        <mat-icon>person</mat-icon>
       </a>
       <a *ngIf="auth.isLoggedIn()" mat-mini-fab routerLink="/logout" (click)="auth.logout()" color="warn" matTooltip="Sign out">
         <mat-icon>exit_to_app</mat-icon>
