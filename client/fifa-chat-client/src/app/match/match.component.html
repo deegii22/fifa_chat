@@ -69,12 +69,12 @@
                   <small>{{m.time}}</small>
                   <mat-progress-bar *ngIf="m.time != 'full-time'" mode="indeterminate" value="{{m.time*0.9}}" color="accent"></mat-progress-bar>
                 </div>
-                <div class="home left">
+                <div class="country left">
                   <img mat-card-img src="/assets/images/svg/{{m.home_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
                   {{m.home_team.country}}
                 </div>
                 <span>{{m.home_team.goals}} : {{m.away_team.goals}}</span>
-                <div class="away right">
+                <div class="country right">
                   <img mat-card-img src="/assets/images/svg/{{m.away_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
                   {{m.away_team.country}}
                 </div>

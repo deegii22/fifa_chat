@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { AuthenticationService } from './auth/authentication.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,6 +16,11 @@ export class AppComponent {
     { path: "matches/tomorrow", label: "Tomorrow" },
     { path: "matches", label: "All Matches" }
   ];
+  id;
   
-  constructor(public auth: AuthenticationService){ }
+  constructor(public auth: AuthenticationService, private router: ActivatedRoute){ 
+    // router.params.subscribe(params => {
+    //   this.id = params['id'];
+    // })
+  }
 }

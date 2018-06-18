@@ -23,14 +23,14 @@
     line-height: 60px
 }
   
-.home, .away {
+.country {
     width: 65px;
     text-align: center !important;
     text-transform: uppercase;
     font-size: 10px;
 }
 
-.home img, .away img {
+.country img {
     width: 40px;
 }
 

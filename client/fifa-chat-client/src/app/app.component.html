@@ -17,18 +17,18 @@
       <a *ngIf="!auth.isLoggedIn()" mat-raised-button routerLink="/login">
         <span>Sign In</span>
       </a>
-      <a *ngIf="auth.isLoggedIn()" mat-mini-fab routerLink="/profile" color="white" matTooltip="{{ auth.getUsername() }}">
+      <a *ngIf="auth.isLoggedIn()" mat-mini-fab color="white" matTooltip="{{ auth.getUsername() }}">
         <mat-icon>person</mat-icon>
       </a>
       
     </div>
 
     <mat-menu #appMenu="matMenu">
+        <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/profile">Profile</button>
         <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/logout" (click)="auth.logout()" color="warn" matTooltip="Sign out">Sign out</button>
-        <!--<button mat-menu-item>Help</button>-->
     </mat-menu>
     
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <button mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="auth.isLoggedIn()">
       <mat-icon>more_vert</mat-icon>
     </button>
     

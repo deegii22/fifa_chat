@@ -9,6 +9,7 @@
     position: fixed;
     width: 100%; 
     height: 100%;  
+    top: 160px;
 }
 
 .chat-input {
@@ -19,7 +20,7 @@
 .chat-list {
     overflow: auto;
     position: fixed;
-    top: 90px;
+    top: 160px;
     left: 25px;
     right: 25px;
     bottom: 120px;
@@ -45,4 +46,38 @@
 
 .chat-notification {
     text-align: center;
+}
+
+.match-container {
+
+}
+
+.match {
+    width: 400px;
+    margin: 20px auto;
+    text-align: center;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 11px;
+}
+
+.match span {
+    line-height: 60px;
+    font-size: 25px;
+}
+
+.match img{
+    width: 50px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.country {
+    text-align: center;
+    width: 150px;
 }
