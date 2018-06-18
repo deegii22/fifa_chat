@@ -38,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [AuthenticationService, AuthGuardService, MatchServiceService],
   bootstrap: [AppComponent]

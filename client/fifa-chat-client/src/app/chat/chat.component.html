@@ -9,20 +9,16 @@
         <p mat-line *ngIf="message.action === undefined">
           <span> {{message.content}} </span>
         </p>
-        <p mat-line *ngIf="message.action === action.JOINED" class="chat-notification">
-          <span> <b>{{message.from.name}}</b> joined to the conversation. </span>
+        <p mat-line *ngIf="message.action === action.JOINED && message.from.name != user.name" class="chat-notification">
+          <span>
+            <b>{{message.from.name}}</b> joined to the conversation. </span>
         </p>
       </mat-list-item>
     </mat-list>
     <div class="chat-footer-container">
       <mat-icon>message</mat-icon>
       <mat-form-field class="chat-input">
-        <input matInput 
-               #inputMessage 
-               maxlength="140" 
-               placeholder="Type your message" 
-               [(ngModel)]="messageContent" 
-               (keyup.enter)="sendMessage(messageContent)">
+        <input matInput #inputMessage maxlength="140" placeholder="Type your message" [(ngModel)]="messageContent" (keyup.enter)="sendMessage(messageContent)">
         <mat-hint align="end">{{inputMessage.value.length}}/140</mat-hint>
       </mat-form-field>
     </div>

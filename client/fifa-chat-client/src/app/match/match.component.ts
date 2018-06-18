@@ -68,8 +68,9 @@ export class MatchComponent implements OnInit{
     this.dataSource.filter = filterValue;
   }
 
-  showChat(){
-    this.router.navigateByUrl('/chat');
+  showChat(fifa_id: string){
+    console.log(fifa_id);
+    this.router.navigate(['/chat/'+ fifa_id]);
   }
 
 }
