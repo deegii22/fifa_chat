@@ -43,8 +43,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   ngOnDestroy() {
     this.sendNotification(Action.LEFT, null);
-    this.subscription.unsubscribe();   
-    console.log('on dest' + this.fifa_id);
+    this.subscription.unsubscribe();
   }
 
   ngAfterViewInit(): void {
@@ -63,8 +62,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
   private initModel(): void {
     const randomId = this.getRandomId();
     this.subscription = this.activatedRoute.params.subscribe(
-     (param: any) =>{console.log('1:' + this.fifa_id); this.fifa_id = param['id'];
-      console.log('2:' + this.fifa_id);}
+      (param: any) => {
+        this.fifa_id = param['id'];
+      }
     );
     this.user = {
       id: randomId,
@@ -85,10 +85,12 @@ export class ChatComponent implements OnInit, AfterViewInit {
       .subscribe((message: Message) => {
         if (message.from.match === this.user.match) {
           if (message.content) {
-            if (message.content.event.id > this.last_event_id) {
-              this.messages.push(message);
-              this.last_event_id = message.content.event.id;
-            }
+            if (message.content.event) {
+              if (message.content.event.id > this.last_event_id) {
+                this.messages.push(message);
+                this.last_event_id = message.content.event.id;
+              }
+            } else this.messages.push(message);
           } else
             this.messages.push(message);
         }
