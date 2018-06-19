@@ -1,17 +1,20 @@
 <div class="match-container">
-  <span>{{match?.venue}} - {{match?.location}}</span>
+  <div class="left">{{match?.venue}} - {{match?.location}}</div>
+  <div class="right">
+    {{match?.time}}
+    <mat-progress-bar *ngIf="match?.time != 'full-time'" mode="indeterminate" value="{{match?.time*0.9}}" color="accent"></mat-progress-bar>
+  </div>
   <div class="match">
       <div class="left country">
-        <img src="/assets/images/svg/{{match?.home_team.country.replace(' ','-').toLowerCase()}}.svg"/>
+        <img src="/assets/images/svg/{{match?.home_team.country.replace(' ','-').toLowerCase()}}.svg" width="50"/>
         <div>{{match?.home_team.country}}</div>
       </div>
       <span>{{match?.home_team.goals}} : {{match?.away_team.goals}}</span>
       <div class="right country">
-        <img src="/assets/images/svg/{{match?.away_team.country.replace(' ','-').toLowerCase()}}.svg"/>
+        <img src="/assets/images/svg/{{match?.away_team.country.replace(' ','-').toLowerCase()}}.svg" width="50"/>
         <div>{{match?.away_team.country}}</div>
       </div>
   </div>
-  <span>{{match?.time}}</span>
 </div>
 <div class="chat-container">
   <mat-card class="main-card">
@@ -38,7 +41,7 @@
             <mat-icon>
               <img src="/assets/images/event/{{message.content.event.type_of_event}}.png" width="20"/>
             </mat-icon> 
-            <small>  {{message.content.event.player}}  </small>
+            <span>  {{message.content.event.player}}  </span>
             <mat-icon>
               <img src="/assets/images/svg/{{message.content.event.country.replace(' ','-').toLowerCase()}}.svg" height="20"/>
             </mat-icon>
