@@ -1,6 +1,6 @@
 <div class="match-container">
+  <span>{{match?.venue}} - {{match?.location}}</span>
   <div class="match">
-      <div>{{match?.venue}} - {{match?.location}}</div>
       <div class="left country">
         <img src="/assets/images/svg/{{match?.home_team.country.replace(' ','-').toLowerCase()}}.svg"/>
         <div>{{match?.home_team.country}}</div>
@@ -11,6 +11,7 @@
         <div>{{match?.away_team.country}}</div>
       </div>
   </div>
+  <span>{{match?.time}}</span>
 </div>
 <div class="chat-container">
   <mat-card class="main-card">
@@ -35,7 +36,7 @@
           <span>
             <b>{{message.content.event.time}} : </b> 
             <mat-icon>
-              <img src="/assets/images/event/{{message.content.event.type_of_event}}.png" width="20"/>
+              <img src="/assets/images/event/{{message.content.event.type_of_event}}.png" height="20"/>
             </mat-icon> 
             <small>  {{message.content.event.player}}  </small>
             <mat-icon>
