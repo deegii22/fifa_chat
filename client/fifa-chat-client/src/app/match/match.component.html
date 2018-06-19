@@ -85,14 +85,14 @@
                 <div class="left">
                     <ul>
                       <li *ngFor="let e of m.home_team_events">
-                        <small *ngIf="e.type_of_event == 'goal' || e.type_of_event == 'goal-penalty'">{{e.player}} {{e.time}}</small>
+                        <small *ngIf="e.type_of_event == 'goal' || e.type_of_event == 'goal-penalty' || e.type_of_event == 'goal-own'">{{e.player}} {{e.time}}</small>
                       </li>
                     </ul>
                 </div>
                 <div class="right">
                     <ul>
                       <li *ngFor="let e of m.away_team_events">
-                          <small *ngIf="e.type_of_event == 'goal' || e.type_of_event == 'goal-penalty'">{{e.player}} {{e.time}}</small>
+                          <small *ngIf="e.type_of_event == 'goal' || e.type_of_event == 'goal-penalty' || e.type_of_event == 'goal-own'">{{e.player}} {{e.time}}</small>
                       </li>
                     </ul>
                 </div>

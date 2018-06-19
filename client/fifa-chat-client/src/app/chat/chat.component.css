@@ -48,6 +48,10 @@
     text-align: center;
 }
 
+.mat-list .mat-list-item .mat-list-text>* {
+    font-size: 11px !important;
+}
+
 .match {
     width: 400px;
     margin: 20px auto;

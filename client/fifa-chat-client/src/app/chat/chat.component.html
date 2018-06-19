@@ -33,7 +33,15 @@
         </p>
         <p mat-line *ngIf="message.action === action.EVENT" class="chat-notification">
           <span>
-            <b>{{message.content.event.time}} : {{message.content.event.type_of_event}}</b> {{message.content.event.player}} <b>{{message.content.event.country}}</b> </span>
+            <b>{{message.content.event.time}} : </b> 
+            <mat-icon>
+              <img src="/assets/images/event/{{message.content.event.type_of_event}}.png" width="20"/>
+            </mat-icon> 
+            <small>  {{message.content.event.player}}  </small>
+            <mat-icon>
+              <img src="/assets/images/svg/{{message.content.event.country.replace(' ','-').toLowerCase()}}.svg" height="20"/>
+            </mat-icon>
+          </span>
         </p>
       </mat-list-item>
     </mat-list>
