@@ -28,10 +28,13 @@ nav {
   flex: 1 1 auto;
 }
 
-/* .mat-toolbar {
+.mat-toolbar {
   background: #212121;
-  color: #fff;
-} */
+  color: #fff !Important;
+}
+.mat-tab-link {
+  color: #fff !Important;
+}
 @font-face {
   font-family: dusha;
   src: url('/assets/fonts/dusha-regular.woff');
@@ -39,4 +42,18 @@ nav {
 
 mat-toolbar {
   background-image: url('/assets/images/fwc_darkbluebg.png');
+}
+
+.mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button {
+  color: #fff;
+  background-color: #424242;
+}
+
+.mat-menu-panel {
+  background: #424242;
+}
+
+.mat-menu-item {
+  background: 0 0;
+  color: #fff;
 }

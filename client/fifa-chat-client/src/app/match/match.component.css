@@ -45,12 +45,7 @@
 }
 .mat-card {
     padding-bottom: 5px !important;
-    /* background: #fff;
-    color: rgba(0,0,0,.87); */
 }
-/* .mat-divider {
-    border-top-color: rgba(0,0,0,.12);
-} */
 
 .mat-card-content {
     margin: 10px 0 0 !important;
@@ -90,4 +85,16 @@ table {
 .mat-progress-bar {
     height: 2px;
     margin-top:2px;
+}
+
+.mat-table {
+    background: #424242;
+}
+
+.mat-cell, .mat-footer-cell {
+    color: #fff;
+}
+
+.mat-header-cell {
+    color: rgba(255,255,255,.7);
 }
