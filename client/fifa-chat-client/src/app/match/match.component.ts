@@ -1,5 +1,6 @@
+
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatchServiceService } from './service/match-service.service';
+import { MatchService } from './service/match-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatTableDataSource} from '@angular/material';
 import { Observable, timer } from 'rxjs';
@@ -20,7 +21,7 @@ export class MatchComponent implements OnInit{
 
   displayedColumns = ['date','hour', 'homeCountry','goals', 'awayCountry', 'status'];
 
-  constructor(private matchService: MatchServiceService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private matchService: MatchService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

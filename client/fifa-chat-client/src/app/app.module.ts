@@ -13,7 +13,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { MatchComponent } from './match/match.component';
-import { MatchServiceService } from './match/service/match-service.service';
+import { MatchService } from './match/service/match-service.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -41,7 +41,7 @@ import { HttpService } from './auth/http.service';
     MatSnackBarModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthenticationService, AuthGuardService, MatchServiceService, HttpService],
+  providers: [AuthenticationService, AuthGuardService, MatchService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

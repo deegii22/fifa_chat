@@ -1,14 +1,14 @@
 <div class="match-container">
   <div class="match">
-      <div>Saransk - Mordovia Arena</div>
+      <div>{{match?.venue}} - {{match?.location}}</div>
       <div class="left country">
-        <img src="/assets/images/svg/portugal.svg"/>
-        <div>Portugal</div>
+        <img src="/assets/images/svg/{{match?.home_team.country.replace(' ','-').toLowerCase()}}.svg"/>
+        <div>{{match?.home_team.country}}</div>
       </div>
-      <span>3 : 3</span>
+      <span>{{match?.home_team.goals}} : {{match?.away_team.goals}}</span>
       <div class="right country">
-        <img src="/assets/images/svg/spain.svg"/>
-        <div>Spain</div>
+        <img src="/assets/images/svg/{{match?.away_team.country.replace(' ','-').toLowerCase()}}.svg"/>
+        <div>{{match?.away_team.country}}</div>
       </div>
   </div>
 </div>
@@ -26,6 +26,10 @@
         <p mat-line *ngIf="message.action === action.JOINED && message.from.name != user.name" class="chat-notification">
           <span>
             <b>{{message.from.name}}</b> joined to the conversation. </span>
+        </p>
+        <p mat-line *ngIf="message.action === action.EVENT" class="chat-notification">
+          <span>
+            <b>{{message.content.event.time}} : {{message.content.event.type_of_event}}</b> {{message.content.event.player}} <b>{{message.content.event.country}}</b> </span>
         </p>
       </mat-list-item>
     </mat-list>
