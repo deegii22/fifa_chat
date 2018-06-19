@@ -11,6 +11,7 @@ var authController = require('../controllers/authentication');
 var profileController = require('../controllers/profile');
 
 // authentication
+router.get('/isRegistered', authController.isRegistered);
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 

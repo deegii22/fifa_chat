@@ -1,0 +1,41 @@
+mat-card {
+    width: 600px;
+    margin: 7% auto;
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.sign-up-button {
+    color: #4285f4;
+}
+
+.login_form {
+    width: 300px;
+    float: left;
+}
+
+.login_form h1{
+    font-family: dusha;
+}
+
+.sign-in-button {
+    color: white;
+    background: #4285f4;
+    float: right;
+    border-radius: 5px;
+}
+
+.lead {   
+    clear: both;
+    padding: 20px 5px;
+}
+
+.proimage{
+    float: left;
+    width: 300px;
+}

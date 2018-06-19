@@ -1,5 +1,5 @@
 <div>
-  <mat-toolbar color="warm">
+  <mat-toolbar>
     <button mat-icon-button>
       <img src="/assets/images/fifa_icon2.svg.png" style="height: 40px">
     </button>
@@ -11,20 +11,27 @@
           {{link.label}}
         </a>
       </nav>
-      <span class="example-fill-remaining-space"></span>
     </div>
+    <span class="example-fill-remaining-space"></span>
     <div>
       <a *ngIf="!auth.isLoggedIn()" mat-raised-button routerLink="/login">
         <span>Sign In</span>
       </a>
-      <a *ngIf="auth.isLoggedIn()" mat-raised-button routerLink="/profile">
-        <mat-icon>face</mat-icon>
-        <!-- matTooltip="{{ auth.getUsername() }}" matTooltipPosition="below" -->
+      <a *ngIf="auth.isLoggedIn()" mat-mini-fab color="white" matTooltip="{{ auth.getUsername() }}">
+        <mat-icon>person</mat-icon>
       </a>
-      <a *ngIf="auth.isLoggedIn()" mat-mini-fab routerLink="/logout" (click)="auth.logout()">
-        <mat-icon>exit_to_app</mat-icon>
-      </a>
+      
     </div>
+
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/profile">Profile</button>
+        <button mat-menu-item *ngIf="auth.isLoggedIn()" routerLink="/logout" (click)="auth.logout()" color="warn" matTooltip="Sign out">Sign out</button>
+    </mat-menu>
+    
+    <button mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="auth.isLoggedIn()">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    
   </mat-toolbar>
   <router-outlet></router-outlet>
 </div>

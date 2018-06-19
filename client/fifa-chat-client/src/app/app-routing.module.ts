@@ -5,15 +5,14 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProfileComponent } from './auth/profile/profile.component';
-import { HomeComponent } from './auth/home/home.component';
 import { MatchComponent } from './match/match.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: "matches/today", pathMatch:"full"},
   { path: 'matches', component: MatchComponent},
   { path: 'matches/:type', component: MatchComponent},
   { path: 'teams/:type', component: MatchComponent},
-  { path: 'chat', component: ChatComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'chat/:id', component: ChatComponent , canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] }

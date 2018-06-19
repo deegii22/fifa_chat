@@ -12,10 +12,14 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './auth/home/home.component';
 import { MatchComponent } from './match/match.component';
-import { MatchServiceService } from './match/service/match-service.service';
-import { HttpClientModule } from '@angular/common/http'
+import { MatchService } from './match/service/match-service.service';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './auth/http.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,6 @@ import { HttpClientModule } from '@angular/common/http'
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
     MatchComponent
   ],
   imports: [
@@ -33,9 +36,12 @@ import { HttpClientModule } from '@angular/common/http'
     ChatModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
   ],
-  providers: [AuthenticationService, AuthGuardService, MatchServiceService],
+  providers: [AuthenticationService, AuthGuardService, MatchService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

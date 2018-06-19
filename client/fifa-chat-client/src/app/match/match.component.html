@@ -1,24 +1,104 @@
-<div class="match-container">
-  <h3>{{ type }}</h3>
-  <mat-list class="match-list">
-    <mat-card class="card" *ngFor="let m of matches">
-      <mat-card-content>
-        <div class="home">
-          <img mat-card-img src="/assets/images/svg/{{m.home_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
-          {{m.home_team.country}}
+<mat-spinner *ngIf="loading; else container" [diameter]="40"  style="position:fixed;top:50%;left:50%" mode="indeterminate"></mat-spinner>
+<ng-template #container>
+    <div class="match-container">
+        <div class="table-container" *ngIf="type == null; else other_content">
+          <h3>All matches</h3>
+          <mat-form-field color="warn">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+          
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef> Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            </ng-container>
+      
+            <!-- Name Column -->
+            <ng-container matColumnDef="hour">
+                <th mat-header-cell *matHeaderCellDef> Hour </th>
+                <td mat-cell *matCellDef="let element"> {{element.hour}} </td>
+              </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="homeCountry">
+              <th mat-header-cell *matHeaderCellDef> Home country </th>
+              <td mat-cell *matCellDef="let element"> 
+                <mat-icon>
+                  <img src="/assets/images/svg/{{element.homeCountry.replace(' ','-').toLowerCase()}}.svg" alt="">
+                </mat-icon>
+                {{element.homeCountry}} 
+              </td>
+            </ng-container>
+      
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="goals">
+                <th mat-header-cell *matHeaderCellDef> Score </th>
+                <td mat-cell *matCellDef="let element"> {{element.goals}}  
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="awayCountry">
+              <th mat-header-cell *matHeaderCellDef> Away country </th>
+              <td mat-cell *matCellDef="let element"> 
+                <mat-icon>
+                  <img src="/assets/images/svg/{{element.awayCountry.replace(' ','-').toLowerCase()}}.svg" alt="">
+                </mat-icon>
+                {{element.awayCountry}}
+              </td>
+            </ng-container>
+      
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element"> 
+                  {{element.status}}
+                </td>
+              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>    
         </div>
-        <span>{{m.home_team.goals}}:{{m.away_team.goals}}</span>
-        <div class="away">
-          <img mat-card-img src="/assets/images/svg/{{m.away_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
-          {{m.away_team.country}}
-        </div>
-      </mat-card-content>
-      <mat-divider></mat-divider>
-      <mat-card-actions align="end">
-        <button mat-icon-button aria-label="Settings">
-          <mat-icon>chat</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </mat-list>
-</div>
+        <ng-template #other_content>
+          <h3>{{ type }}</h3>
+          <mat-list class="match-list">
+            <mat-card class="card" *ngFor="let m of matches" (click)="showChat(m.fifa_id)" color="white">
+              <mat-card-content>
+                <div class="time">  
+                  <small>{{m.time}}</small>
+                  <mat-progress-bar *ngIf="m.time != 'full-time'" mode="indeterminate" value="{{m.time*0.9}}" color="accent"></mat-progress-bar>
+                </div>
+                <div class="country left">
+                  <img mat-card-img src="/assets/images/svg/{{m.home_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
+                  {{m.home_team.country}}
+                </div>
+                <span>{{m.home_team.goals}} : {{m.away_team.goals}}</span>
+                <div class="country right">
+                  <img mat-card-img src="/assets/images/svg/{{m.away_team.country.replace(' ','-').toLowerCase()}}.svg" alt="">
+                  {{m.away_team.country}}
+                </div>
+                <div style="text-align: center; margin-top: 10px;"><small>{{m.datetime.substring(11,16)}}</small></div>
+              </mat-card-content>
+              <mat-divider *ngIf="m.home_team_events !=''"></mat-divider>
+              <mat-card-footer *ngIf="m.home_team_events !=''">
+                <div class="left">
+                    <ul>
+                      <li *ngFor="let e of m.home_team_events">
+                        <small *ngIf="e.type_of_event == 'goal' || e.type_of_event == 'goal-penalty'">{{e.player}} {{e.time}}</small>
+                      </li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <ul>
+                      <li *ngFor="let e of m.away_team_events">
+                          <small *ngIf="e.type_of_event == 'goal' || e.type_of_event == 'goal-penalty'">{{e.player}} {{e.time}}</small>
+                      </li>
+                    </ul>
+                </div>
+              </mat-card-footer>
+            </mat-card>
+          </mat-list>
+        </ng-template>
+      </div>
+</ng-template>

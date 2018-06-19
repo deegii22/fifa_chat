@@ -16,7 +16,7 @@
 }
 
 .mat-tab-nav-bar .mat-ink-bar {
-  background-color: #d20a11 !Important
+  background-color: #d20a11 !Important;
 }
 
 nav {
@@ -26,4 +26,34 @@ nav {
 
 .example-fill-remaining-space {
   flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  background: #212121;
+  color: #fff !Important;
+}
+.mat-tab-link {
+  color: #fff !Important;
+}
+@font-face {
+  font-family: dusha;
+  src: url('/assets/fonts/dusha-regular.woff');
+}
+
+mat-toolbar {
+  background-image: url('/assets/images/fwc_darkbluebg.png');
+}
+
+.mat-fab, .mat-flat-button, .mat-mini-fab, .mat-raised-button {
+  color: #fff;
+  background-color: #424242;
+}
+
+.mat-menu-panel {
+  background: #424242;
+}
+
+.mat-menu-item {
+  background: 0 0;
+  color: #fff;
 }
