@@ -87,10 +87,18 @@ export class ChatComponent implements OnInit, AfterViewInit {
         if (message.from.match === this.user.match) {
           if (message.content) {
             if (message.content.event) {
-              if (message.content.event.time >= this.last_event_time && message.content.event.player != this.last_event_player && message.content.event.type_of_event != 'substitution-out') {
-                this.messages.push(message);
-                this.last_event_time = message.content.event.time;
-                this.last_event_player = message.content.event.player;
+              if (message.content.event.time >= this.last_event_time) {
+                if (message.content.event.time == this.last_event_time) {
+                  if (message.content.event.player != this.last_event_player && message.content.event.type_of_event != 'substitution-out') {
+                    this.messages.push(message);
+                    this.last_event_time = message.content.event.time;
+                    this.last_event_player = message.content.event.player;
+                  }
+                } else {
+                  this.messages.push(message);
+                  this.last_event_time = message.content.event.time;
+                  this.last_event_player = message.content.event.player;
+                }
               }
             } else this.messages.push(message);
           } else
