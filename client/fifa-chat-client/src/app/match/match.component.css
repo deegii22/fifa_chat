@@ -74,12 +74,12 @@ table {
 .time {
     position: absolute;
     top:1px;
-    right: 0;   
+    right: 5px;   
 }
 
 .time small {
     text-transform: uppercase;
-    font-size: 8px;
+    font-size: 10px;
 }
 
 .mat-progress-bar {
