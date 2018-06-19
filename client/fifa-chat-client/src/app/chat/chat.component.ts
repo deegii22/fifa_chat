@@ -80,8 +80,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
     this.ioConnection = this.socketService.onMessage()
       .subscribe((message: Message) => {
-        if (message.from.match === this.user.match)
-          this.messages.push(message);
+        if (message.from.match === this.user.match) {
+          if (message.content) {
+            if (message.content.event.id > this.last_event_id) {
+              this.messages.push(message);
+              this.last_event_id = message.content.event.id;
+            }
+          } else
+            this.messages.push(message);
+        }
       });
   }
 
@@ -144,7 +151,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
       evt.country = match.home_team.country;
       return evt;
     });
-    let away = match.away_team_events.filter(function (evt) { return 1 > this.last_event_id }.bind(this));
+    let away = match.away_team_events.filter(function (evt) { return evt.id > this.last_event_id }.bind(this));
     away = away.map((evt) => {
       evt.country = match.away_team.country;
       return evt;
@@ -153,7 +160,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
     for (let evt of events) {
       this.sendNotification(Action.EVENT, evt);
-      this.last_event_id = evt.id;
     }
   }
 }
