@@ -27,6 +27,10 @@
           <span>
             <b>{{message.from.name}}</b> joined to the conversation. </span>
         </p>
+        <p mat-line *ngIf="message.action === action.LEFT" class="chat-notification">
+          <span>
+            <b>{{message.from.name}}</b> left the conversation. </span>
+        </p>
         <p mat-line *ngIf="message.action === action.EVENT" class="chat-notification">
           <span>
             <b>{{message.content.event.time}} : {{message.content.event.type_of_event}}</b> {{message.content.event.player}} <b>{{message.content.event.country}}</b> </span>
