@@ -51,5 +51,6 @@ app.get('/', function (req, res) {
 })
 
 var server = app.listen(port, () => console.log("listening 3000 ..."));
+// https://github.com/socketio/socket.io/issues/2075
 var io = require('socket.io').listen(server);
 require("./chat/chat.js")(app, io);

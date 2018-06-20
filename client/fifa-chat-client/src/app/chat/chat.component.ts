@@ -30,8 +30,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
   last_event_id;
   match;
 
+  // getting a reference to the overall list, which is the parent container of the list items
   @ViewChild(MatList, { read: ElementRef }) matList: ElementRef;
 
+  // getting a reference to the items/messages within the list
   @ViewChildren(MatListItem, { read: ElementRef }) matListItems: QueryList<MatListItem>;
 
   constructor(private socketService: SocketService, private activatedRoute: ActivatedRoute,
@@ -47,11 +49,14 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    // subscribing to any changes in the list of items / messages
     this.matListItems.changes.subscribe(elements => {
       this.scrollToBottom();
     });
   }
 
+  // auto-scroll fix: inspired by this stack overflow post
+  // https://stackoverflow.com/questions/35232731/angular2-scroll-to-bottom-chat-style
   private scrollToBottom(): void {
     try {
       this.matList.nativeElement.scrollTop = this.matList.nativeElement.scrollHeight;
