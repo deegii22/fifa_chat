@@ -38,7 +38,7 @@ export class MatchComponent implements OnInit{
     })
   }
 
-  // Added by Deegii - fetch matches with real time data 
+  // fetch matches with real time data 
   refreshData(){
     this.matchesSubscription = this.matchService.getMatches(this.type).subscribe(matches => {
         this.matches = matches;
@@ -46,6 +46,7 @@ export class MatchComponent implements OnInit{
         if(this.type == null){
           const ELEMENT_DATA: PeriodicElement[] = [];
           for(let m of this.matches){
+            console.log(m.home_team.country + " " + m.datetime + " " + m.fifa_id)
             ELEMENT_DATA.push({date: m.datetime.substring(0,10),hour: m.datetime.substring(11,16), homeCountry: m.home_team.country, goals: m.home_team.goals + ' : ' + m.away_team.goals, awayCountry: m.away_team.country,  status: m.status})
           }
           this.dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -64,7 +65,7 @@ export class MatchComponent implements OnInit{
     this.timerSubscription = timer(20000).subscribe(() => this.refreshData());
   }
 
-  // Added by Deegii - table filter
+  // table filter
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); 
     filterValue = filterValue.toLowerCase(); 
@@ -72,7 +73,6 @@ export class MatchComponent implements OnInit{
   }
 
   showChat(fifa_id: string){
-    console.log(fifa_id);
     this.router.navigate(['/chat/'+ fifa_id]);
   }
 
