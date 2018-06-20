@@ -27,8 +27,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   ioConnection: any;
   matchesSubscription;
   timerSubscription;
-  last_event_time;
-  last_event_player;
+  last_event_id;
   match;
 
   @ViewChild(MatList, { read: ElementRef }) matList: ElementRef;
@@ -74,7 +73,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
       match: this.fifa_id
     };
     this.initIoConnection();
-    this.last_event_time = '0\'';
+    this.last_event_id= 0;
     this.refreshData();
     this.sendNotification(Action.JOINED, null);
   }
@@ -87,18 +86,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
         if (message.from.match === this.user.match) {
           if (message.content) {
             if (message.content.event) {
-              if (message.content.event.time >= this.last_event_time) {
-                if (message.content.event.time == this.last_event_time) {
-                  if (message.content.event.player != this.last_event_player && message.content.event.type_of_event != 'substitution-out') {
-                    this.messages.push(message);
-                    this.last_event_time = message.content.event.time;
-                    this.last_event_player = message.content.event.player;
-                  }
-                } else {
+              if (message.content.event.id > this.last_event_id) {
                   this.messages.push(message);
-                  this.last_event_time = message.content.event.time;
-                  this.last_event_player = message.content.event.player;
-                }
+                  this.last_event_id = message.content.event.id;
               }
             } else this.messages.push(message);
           } else
@@ -161,17 +151,17 @@ export class ChatComponent implements OnInit, AfterViewInit {
   }
 
   buildEvent(match: any) {
-    let home = match.home_team_events.filter(function (evt) { return evt.time >= this.last_event_time }.bind(this));
+    let home = match.home_team_events.filter(function (evt) { return evt.id > this.last_event_id }.bind(this));
     home = home.map((evt) => {
       evt.country = match.home_team.country;
       return evt;
     });
-    let away = match.away_team_events.filter(function (evt) { return evt.time >= this.last_event_time }.bind(this));
+    let away = match.away_team_events.filter(function (evt) { return evt.id > this.last_event_id }.bind(this));
     away = away.map((evt) => {
       evt.country = match.away_team.country;
       return evt;
     });
-    let events = home.concat(away).sort(function (a, b) { return (a.time > b.time) ? 1 : ((b.time > a.time) ? -1 : 0); });
+    let events = home.concat(away).sort(function (a, b) { return (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0); });
 
     for (let evt of events) {
       this.sendNotification(Action.EVENT, evt);

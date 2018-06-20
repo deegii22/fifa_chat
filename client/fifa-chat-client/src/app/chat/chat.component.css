@@ -9,7 +9,7 @@
     position: fixed;
     width: 100%; 
     height: 100%;  
-    top: 160px;
+    top: 140px;
 }
 
 .chat-input {
@@ -20,7 +20,7 @@
 .chat-list {
     overflow: auto;
     position: fixed;
-    top: 160px;
+    top: 140px;
     left: 25px;
     right: 25px;
     bottom: 120px;
@@ -48,25 +48,22 @@
     text-align: center;
 }
 
-.mat-list .mat-list-item .mat-list-text>* {
-    font-size: 11px !important;
+.match-container {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 13px;
+    padding: 0 20px;
+    text-transform: uppercase
 }
-
 .match {
     width: 400px;
     margin: 20px auto;
     text-align: center;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
     font-size: 11px;
 }
 
 .match span {
     line-height: 60px;
     font-size: 25px;
-}
-
-.match img{
-    width: 50px;
 }
 
 .left {
@@ -80,4 +77,12 @@
 .country {
     text-align: center;
     width: 150px;
+}
+
+.mat-list .mat-list-item, .mat-nav-list .mat-list-item, .mat-selection-list .mat-list-item {
+    font-size: 11px !important
+}
+
+.mat-list .mat-list-item {
+    height: 40px;
 }
